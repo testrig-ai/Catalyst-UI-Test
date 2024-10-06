@@ -19,17 +19,17 @@ test.describe("Catalyst UI tests", () => {
     await expect(page.getByTestId("create-account-link")).toBeEnabled();
 
   });
-  test("Check all elements on Login Page", async ({ page }) => {
-    // check login page
+  // test("Check all elements on Login Page", async ({ page }) => {
+  //   // check login page
 
-    await expect(page.getByText("Email")).toBeVisible();
-    await expect(page.getByTestId("auth-email-field")).toBeVisible();
-    await expect(page.getByTestId("auth-submit-button")).toBeEnabled();
-    await expect(page.locator('//*[@id="id_microsoft_social_sign_in"]/button')).toBeVisible()
-    await expect(page.locator('//*[@id="id_google_social_sign_in"]/button')).toBeVisible()
-    await expect(page.locator('//*[@id="id_github_social_sign_in"]/button')).toBeVisible()
-    await expect(page.getByTestId("create-account-link")).toBeEnabled();
+  //   await expect(page.getByText("Email")).toBeVisible();
+  //   await expect(page.getByTestId("auth-email-field")).toBeVisible();
+  //   await expect(page.getByTestId("auth-submit-button")).toBeEnabled();
+  //   await expect(page.locator('//*[@id="id_microsoft_social_sign_in"]/button')).toBeVisible()
+  //   await expect(page.locator('//*[@id="id_google_social_sign_in"]/button')).toBeVisible()
+  //   await expect(page.locator('//*[@id="id_github_social_sign_in"]/button')).toBeVisible()
+  //   await expect(page.getByTestId("create-account-link")).toBeEnabled();
 
-  });
+  // });
 
 });

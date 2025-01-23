@@ -1,5 +1,5 @@
 
-import { Page , envFileName,Locator, expect} from "../fixture/Fixture";
+import { Page , envFileName,Locator, test} from "../fixture/Fixture";
 require("dotenv").config({ path: envFileName });
 
  export default class SignUp{
@@ -27,9 +27,10 @@ require("dotenv").config({ path: envFileName });
     await this.page.getByLabel('Password', { exact: true }).click();
     await this.page.getByLabel('Password', { exact: true }).fill(`${password}`);
     await this.page.getByRole('button', { name: 'Continue' }).click();
-   
+    await  this.page.waitForTimeout(10000);
     
-  }
+   
+}
 
 
 }

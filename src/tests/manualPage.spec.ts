@@ -34,11 +34,19 @@ test.describe("ManualPageTests", () => {
     //            });
 
 
-       test("TC006", async ({
+      //  test("TC006", async ({
+      //      page,signUp,manualPage
+      //          }) => {
+      //         await signUp.register(process.env.fname!,process.env.lname!,process.env.email!,process.env.password!);
+      //         await manualPage.securitytesting();
+                 
+      //              });
+
+     test("TC007", async ({
            page,signUp,manualPage
                }) => {
               await signUp.register(process.env.fname!,process.env.lname!,process.env.email!,process.env.password!);
-              await manualPage.securitytesting();
+               await manualPage.verifyJobpage();
                  
                    });
 
@@ -47,3 +55,4 @@ test.describe("ManualPageTests", () => {
 
 
 });
+//v

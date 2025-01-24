@@ -5,12 +5,15 @@ import path from 'path';
 
 export default defineConfig({
   testDir: join(__dirname,"src","tests"),
-  snapshotDir: "../src/resources/snapShots",
+  snapshotDir: "./src/resources/snapShots",
   fullyParallel: true,
   workers:1 , 
   reporter: 'html',
+  
+  
   use: {
   
+    
     trace: 'on-first-retry',
   },
 

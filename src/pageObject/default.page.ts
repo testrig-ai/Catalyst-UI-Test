@@ -11,9 +11,12 @@ export default class DefaultPage {
   );
 
    async fillEnvironment() {
-   await test.step("Move to Median Earning page", async () => {
+   await test.step("ENter  environment details ", async () => {
    //   await this.page.waitForTimeout(5000);;
-      await this.environment.click({force:true});
+      await this.page.locator('li').filter({ hasText: 'Projects' }).locator('svg').nth(1).click();
+      await this.page.locator('li').filter({ hasText: /^catalyst12$/ }).getByRole('link').click();
+      await this.page.waitForTimeout(50000);
+      await this.page.getByRole('button', { name: 'Environment' }).click();
       await this.page.getByPlaceholder('Enter Environment Name').click();
       await this.page.waitForTimeout(5000);
       await this.page.getByPlaceholder('Enter Environment Name').fill('DEV');

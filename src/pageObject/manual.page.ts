@@ -20,7 +20,60 @@ export default class ManualPage {
         await this.page.getByTestId('UseCasePreconditon-TextBox').fill('login page visibility');
         await this.page.locator('div').filter({ hasText: /^Email login$/ }).nth(2).click();
         await this.page.locator('div').filter({ hasText: /^Save$/ }).getByRole('button').click();
-        await this.page.waitForTimeout(5000);
+        await this.page.waitForTimeout(10000);
+        await this.page.screenshot({ path: './src/resources/snapShots/useCase.png', fullPage: true });
 
       }
+
+      async createTestCase(){
+     
+        await this.page.getByRole('button', { name: 'Add Test Case' }).click();
+        await this.page.getByTestId('TestCasetittle-inputbox').click();
+        await this.page.getByTestId('TestCasetittle-inputbox').fill('Resgistration');
+        await this.page.getByTestId('TestcaseDescription-TextBox').click();
+        await this.page.getByTestId('TestcaseDescription-TextBox').fill('add details');
+        await this.page.getByTestId('TestcasePreconditon-TextBox').click();
+        await this.page.getByTestId('TestcasePreconditon-TextBox').fill('go to  registration  page');
+        await this.page.locator('#skip').getByRole('button').first().click();
+        await  this.page.waitForTimeout(5000);
+        await this.page.getByRole('link', { name: 'Manual Test', exact: true }).click();
+        await this.page.getByRole('button', { name: 'Test Cases' }).click();
+        await this.page.waitForTimeout(10000);
+        await this.page.screenshot({ path: './src/resources/snapShots/testCase.png', fullPage: true });
+
+      }
+
+      async  createPerformance(){
+        await this.page.locator('li').filter({ hasText: 'Projects' }).locator('svg').nth(1).click();
+        await this.page.locator('li').filter({ hasText: /^catalyst12$/ }).getByRole('link').click();
+        await this.page.locator('li').filter({ hasText: 'Manage' }).locator('div').click();
+        await this.page.locator('li').filter({ hasText: /^Performance Testing$/ }).getByRole('link').click();
+        await this.page.getByRole('combobox').selectOption('0');
+        await this.page.locator('div').filter({ hasText: /^Duration \(minute\) \*$/ }).locator('#duration').click();
+        await this.page.locator('#concurrent_user').click();
+        await this.page.getByRole('button', { name: 'Start Scan' }).click();
+        await this.page.waitForTimeout(10000);
+        await this.page.screenshot({ path: './src/resources/snapShots/performanceScan.png', fullPage: true });
+       
+
+      }
+
+      async securitytesting(){
+        await this.page.locator('li').filter({ hasText: 'Projects' }).locator('svg').nth(1).click();
+        await this.page.locator('li').filter({ hasText: /^catalyst12$/ }).getByRole('link').click();
+        await this.page.locator('li').filter({ hasText: 'Manage' }).locator('div').click();
+        await this.page.locator('li').filter({ hasText: /^Security Testing$/ }).getByRole('link').click();
+        await this.page.getByTestId('selectEnvironment-Security').selectOption('0');
+        await this.page.getByTestId('ScanLevel-Security').selectOption('LIGHT');
+        await this.page.getByTestId('ScanFrequency-Security').getByRole('combobox').selectOption('one-time');
+        await this.page.getByTestId('ScanFrequency-Security').getByRole('combobox').selectOption('now');
+        await this.page.getByRole('button', { name: 'Start Scan' }).click();
+        await this.page.waitForTimeout(20000);
+        await this.page.screenshot({ path: './src/resources/snapShots/securityTesting.png', fullPage: true });
+
+        
+
+      }
+
+
 }

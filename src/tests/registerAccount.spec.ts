@@ -15,4 +15,4 @@ test('Register to playwright config', async ({ page,signUp}) => {
   await signUp.register(fname,lname,email,password);
     
 });
-//v
+

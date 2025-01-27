@@ -15,7 +15,7 @@ export default class DefaultPage {
    //   await this.page.waitForTimeout(5000);;
       await this.page.locator('li').filter({ hasText: 'Projects' }).locator('svg').nth(1).click();
       await this.page.locator('li').filter({ hasText: /^catalyst12$/ }).getByRole('link').click();
-      await this.page.waitForTimeout(50000);
+      await this.page.waitForTimeout(5000);
       await this.page.getByRole('button', { name: 'Environment' }).click();
       await this.page.getByPlaceholder('Enter Environment Name').click();
       await this.page.waitForTimeout(5000);
@@ -26,6 +26,7 @@ export default class DefaultPage {
       await this.page.getByPlaceholder('example.com', { exact: true }).fill('example.com');
       await this.page.getByRole('button', { name: 'Save' }).click();
       await this.page.waitForTimeout(10000);
+      await this.page.getByText('Environment saved').isVisible();
       });
   }
 
@@ -33,9 +34,13 @@ export default class DefaultPage {
     await this.page.locator('li').filter({ hasText: 'Projects' }).locator('path').nth(1).click();
     await this.page.locator('li').filter({ hasText: /^New Project$/ }).getByRole('link').click();
     await this.page.getByPlaceholder('Enter Name').click();
-    await this.page.getByPlaceholder('Enter Name').fill('Catalyst ');
+    await this.page.getByPlaceholder('Enter Name').fill('catalyst12');
+    await this.page.waitForTimeout(5000);
     await this.page.getByTestId('Project-description-box').click();
     await this.page.getByTestId('Project-description-box').fill('Testing ');
     await this.page.getByTestId('empty-submit').click();
+    await this.page.waitForTimeout(5000);
+    await this.page.getByText('Project created successfully!').isVisible();
+ 
   }
 }

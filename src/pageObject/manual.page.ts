@@ -81,11 +81,11 @@ export default class ManualPage {
         await this.page.locator('li').filter({ hasText: 'Manage' }).locator('div').click();
         await this.page.locator('li').filter({ hasText: /^Jobs$/ }).getByRole('link').click();
         await this.page.screenshot({ path: './src/resources/snapShots/jobpage.png', fullPage: true });
-        await this.page.getByTestId('search-input').click();
-        await this.page.getByTestId('search-input').fill('006');
-        await this.page.getByText('JOB0006').click();
-        await this.page.getByTestId('job-type-select').selectOption('zap');
-        await this.page.getByTestId('job-type-select').selectOption('k6');
+        // await this.page.getByTestId('search-input').click();
+        // await this.page.getByTestId('search-input').fill('006');
+    //    await this.page.getByText('JOB0006').click();
+        // await this.page.getByTestId('job-type-select').selectOption('zap');
+        // await this.page.getByTestId('job-type-select').selectOption('k6');
         await this.page.getByTestId('status-select').selectOption('Completed');
         await this.page.getByTestId('status-select').selectOption('InProgress');
         await this.page.getByTestId('job-type-select').selectOption('zap');
@@ -93,7 +93,26 @@ export default class ManualPage {
         // const downloadPromise = this.page.waitForEvent('download');
         // await this.page.getByTestId('job-row-0').locator('path').first().click();
         // const download = await downloadPromise;
-        await this.page.getByTestId('job-row-0').getByRole('img').nth(1).click();
+      //  await this.page.getByTestId('job-row-0').getByRole('img').nth(1).click();
+      }
+
+      async createRelease(){
+        await this.page.locator('li').filter({ hasText: 'Projects' }).locator('svg').nth(1).click();
+        await this.page.locator('li').filter({ hasText: /^catalyst12$/ }).getByRole('link').click();
+        await this.page.locator('li').filter({ hasText: 'Manage' }).locator('div').click();
+        await this.page.locator('li').filter({ hasText: /^Releases$/ }).getByRole('link').click();
+        await this.page.getByRole('button', { name: 'Create Release' }).click();
+        await this.page.getByPlaceholder('Enter release title').fill('AI-Testcase generation ');
+        await this.page.getByTestId('release-description').getByRole('paragraph').click();
+        await this.page.locator('.tiptap').fill('Test case generation ');
+        await this.page.screenshot({ path: './src/resources/snapShots/releasePage.png', fullPage: true });
+        await this.page.locator('div').filter({ hasText: /^Save$/ }).getByRole('button').click();
+        await this.page.waitForTimeout(5000);
+        await this.page.getByText('Release Created Successfully').isVisible();
+        await this.page.waitForTimeout(5000);
+        await this.page.screenshot({ path: './src/resources/snapShots/releaseCreatedpage.png', fullPage: true });
+       
+
       }
 
 

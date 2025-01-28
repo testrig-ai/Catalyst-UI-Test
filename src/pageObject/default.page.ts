@@ -27,10 +27,16 @@ export default class DefaultPage {
       await this.page.getByRole('button', { name: 'Save' }).click();
       await this.page.waitForTimeout(10000);
       await this.page.getByText('Environment saved').isVisible();
+      await this.page.getByRole('button', { name: 'Settings' }).click();
+      await this.page.waitForTimeout(5000);
+      await this.page.screenshot({ path: './src/resources/snapShots/setttingPage.png', fullPage: true });
+      await this.page.getByRole('button', { name: 'Environment' }).click();
+    
       });
   }
 
   async createNewProject(){
+    await test.step("Create new project ", async () => {
     await this.page.locator('li').filter({ hasText: 'Projects' }).locator('path').nth(1).click();
     await this.page.locator('li').filter({ hasText: /^New Project$/ }).getByRole('link').click();
     await this.page.getByPlaceholder('Enter Name').click();
@@ -41,6 +47,6 @@ export default class DefaultPage {
     await this.page.getByTestId('empty-submit').click();
     await this.page.waitForTimeout(5000);
     await this.page.getByText('Project created successfully!').isVisible();
- 
+  });
   }
 }

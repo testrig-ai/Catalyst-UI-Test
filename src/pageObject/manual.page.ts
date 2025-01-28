@@ -7,11 +7,17 @@ export default class ManualPage {
       }
    
       async createUsecase(){
+        await test.step("Create a new use case ", async () => {
         await this.page.locator('li').filter({ hasText: 'Projects' }).locator('svg').nth(1).click();
         await this.page.locator('li').filter({ hasText: /^catalyst12$/ }).getByRole('link').click();
         await this.page.getByText('Total Use Cases').click();
         await this.page.getByRole('button', { name: 'Create Use Case' }).click();
         await this.page.waitForTimeout(5000);
+        await this.page.locator('div').filter({ hasText: /^StateDraft$/ }).nth(3).click();
+        await this.page.getByText('Ready').click();
+        await this.page.waitForTimeout(2000);
+        await this.page.locator('div').filter({ hasText: /^PriorityLow$/ }).nth(3).click();
+        await this.page.getByText('Medium').click();
         await this.page.getByTestId('UseCasetittle-inputbox').click();
         await this.page.getByTestId('UseCasetittle-inputbox').fill('Email');
         await this.page.locator('div').filter({ hasText: /^Use Case Description \*$/ }).getByRole('paragraph').click();
@@ -22,12 +28,17 @@ export default class ManualPage {
         await this.page.locator('div').filter({ hasText: /^Save$/ }).getByRole('button').click();
         await this.page.waitForTimeout(10000);
         await this.page.screenshot({ path: './src/resources/snapShots/useCase.png', fullPage: true });
-
+      });
       }
 
       async createTestCase(){
-     
+        await test.step("Create a new test_case", async () => {
         await this.page.getByRole('button', { name: 'Add Test Case' }).click();
+        await this.page.locator('div').filter({ hasText: /^StateActive$/ }).nth(1).click();
+        await this.page.getByText('Active').nth(1).click();
+        await this.page.waitForTimeout(2000);
+        await this.page.getByText('Medium').click();
+        await this.page.getByText('Low').click();
         await this.page.getByTestId('TestCasetittle-inputbox').click();
         await this.page.getByTestId('TestCasetittle-inputbox').fill('Resgistration');
         await this.page.getByTestId('TestcaseDescription-TextBox').click();
@@ -40,10 +51,11 @@ export default class ManualPage {
         await this.page.getByRole('button', { name: 'Test Cases' }).click();
         await this.page.waitForTimeout(10000);
         await this.page.screenshot({ path: './src/resources/snapShots/testCase.png', fullPage: true });
-
+      });
       }
 
       async  createPerformance(){
+        await test.step("Create a performance ", async () => {
         await this.page.locator('li').filter({ hasText: 'Projects' }).locator('svg').nth(1).click();
         await this.page.locator('li').filter({ hasText: /^catalyst12$/ }).getByRole('link').click();
         await this.page.locator('li').filter({ hasText: 'Manage' }).locator('div').click();
@@ -54,11 +66,12 @@ export default class ManualPage {
         await this.page.getByRole('button', { name: 'Start Scan' }).click();
         await this.page.waitForTimeout(10000);
         await this.page.screenshot({ path: './src/resources/snapShots/performanceScan.png', fullPage: true });
-       
+      });
 
       }
 
       async securitytesting(){
+        await test.step("scan a security testing ", async () => {
         await this.page.locator('li').filter({ hasText: 'Projects' }).locator('svg').nth(1).click();
         await this.page.locator('li').filter({ hasText: /^catalyst12$/ }).getByRole('link').click();
         await this.page.locator('li').filter({ hasText: 'Manage' }).locator('div').click();
@@ -71,11 +84,12 @@ export default class ManualPage {
         await this.page.waitForTimeout(20000);
         await this.page.screenshot({ path: './src/resources/snapShots/securityTesting.png', fullPage: true });
 
-        
+      });
 
       }
 
       async verifyJobpage(){
+        await test.step("Verify job page", async () => {
         await this.page.locator('li').filter({ hasText: 'Projects' }).locator('svg').nth(1).click();
         await this.page.locator('li').filter({ hasText: /^catalyst12$/ }).getByRole('link').click();
         await this.page.locator('li').filter({ hasText: 'Manage' }).locator('div').click();
@@ -94,9 +108,11 @@ export default class ManualPage {
         // await this.page.getByTestId('job-row-0').locator('path').first().click();
         // const download = await downloadPromise;
       //  await this.page.getByTestId('job-row-0').getByRole('img').nth(1).click();
+    });
       }
 
       async createRelease(){
+        await test.step("Create a  new release", async () => {
         await this.page.locator('li').filter({ hasText: 'Projects' }).locator('svg').nth(1).click();
         await this.page.locator('li').filter({ hasText: /^catalyst12$/ }).getByRole('link').click();
         await this.page.locator('li').filter({ hasText: 'Manage' }).locator('div').click();
@@ -111,7 +127,7 @@ export default class ManualPage {
         await this.page.getByText('Release Created Successfully').isVisible();
         await this.page.waitForTimeout(5000);
         await this.page.screenshot({ path: './src/resources/snapShots/releaseCreatedpage.png', fullPage: true });
-       
+      });
 
       }
 

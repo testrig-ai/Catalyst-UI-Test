@@ -21,6 +21,7 @@ test.describe("DefaultPageTests", () => {
       }) => {
         await signUp.register(process.env.fname!,process.env.lname!,process.env.email!,process.env.password!);
         await defaultPage.fillEnvironment();
+
         
        
       });

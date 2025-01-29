@@ -13,6 +13,7 @@ export default class ManualPage {
         await this.page.getByText('Total Use Cases').click();
         await this.page.getByRole('button', { name: 'Create Use Case' }).click();
         await this.page.waitForTimeout(5000);
+        await this.page.screenshot({ path: './src/resources/snapShots/useCase.png', fullPage: true });
         await this.page.locator('div').filter({ hasText: /^StateDraft$/ }).nth(3).click();
         await this.page.getByText('Ready').click();
         await this.page.waitForTimeout(2000);
@@ -121,14 +122,48 @@ export default class ManualPage {
         await this.page.getByPlaceholder('Enter release title').fill('AI-Testcase generation ');
         await this.page.getByTestId('release-description').getByRole('paragraph').click();
         await this.page.locator('.tiptap').fill('Test case generation ');
-        await this.page.screenshot({ path: './src/resources/snapShots/releasePage.png', fullPage: true });
+        await this.page.locator('div').filter({ hasText: /^EnvironmentNone$/ }).nth(3).click();
+        await this.page.getByText('DEV - WEB').click();
         await this.page.locator('div').filter({ hasText: /^Save$/ }).getByRole('button').click();
         await this.page.waitForTimeout(5000);
+     //   await this.page.screenshot({ path: './src/resources/snapShots/releasePage.png', fullPage: true });
         await this.page.getByText('Release Created Successfully').isVisible();
         await this.page.waitForTimeout(5000);
         await this.page.screenshot({ path: './src/resources/snapShots/releaseCreatedpage.png', fullPage: true });
+        
+        
       });
 
+      }
+
+      async  runReleaseTestCase(){
+        // await this.page.locator('li').filter({ hasText: 'Projects' }).locator('svg').nth(1).click();
+        // await this.page.locator('li').filter({ hasText: /^catalyst12$/ }).getByRole('link').click();
+        // await this.page.locator('li').filter({ hasText: 'Manage' }).locator('div').click();
+        await this.page.locator('.text-sm > div > div > .text-teal-700').first().click();
+        await this.page.getByRole('button', { name: 'Defects 0/' }).click();
+        await  this.page.waitForTimeout(5000);
+        await this.page.locator('div').filter({ hasText: /^Save$/ }).getByRole('button').click();
+        await this.page.getByText('Your Data has beed saved').isVisible();
+        await this.page.waitForTimeout(5000);
+        await this.page.screenshot({ path: './src/resources/snapShots/releaseData.png', fullPage: true });
+        await this.page.locator('#skip').getByRole('link', { name: 'Releases' }).click();
+        await  this.page.waitForTimeout(5000);
+        await this.page.getByText('Support NotificationsDefault_OrgFree TrialUser Detailscatalyst12Releases Create').click();
+         await  this.page.waitForTimeout(5000);
+         await this.page.locator('.col-span-1 > button').first().click();
+         await this.page.waitForTimeout(5000);
+         await this.page.goto('https://octopus-app-d459t.ondigitalocean.app/releases/test-execute/81c9d652-7351-437f-9848-1da35b250723');
+         await this.page.waitForTimeout(10000);
+        // await this.page.getByTestId('testcase-row-TC0013').locator('path').first().click();
+        // await this.page.getByTestId('testcase-row-TC0013').getByText('Jaydeep').click();
+        // await this.page.getByRole('button', { name: 'Test Run' }).click();
+        // await  this.page.waitForTimeout(3000);
+        // await this.page.locator('div').filter({ hasText: /^1$/ }).getByRole('img').click();
+        // await this.page.locator('div').filter({ hasText: /^Not ExecutedPassedFailedSkippedBlocked$/ }).getByRole('combobox').selectOption('Passed');
+        // await  this.page.waitForTimeout(5000);
+        // await this.page.getByTestId('loading').getByRole('button').nth(2).click();
+        // await this.page.getByText('Status Updated Successfully !').isVisible();
       }
 
 

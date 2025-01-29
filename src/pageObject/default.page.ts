@@ -31,6 +31,10 @@ export default class DefaultPage {
       await this.page.waitForTimeout(5000);
       await this.page.screenshot({ path: './src/resources/snapShots/setttingPage.png', fullPage: true });
       await this.page.getByRole('button', { name: 'Environment' }).click();
+      await this.page.getByLabel('Dark Mode').click();
+      await  this.page.waitForTimeout(5000);
+      await this.page.screenshot({ path: './src/resources/snapShots/darkMode.png', fullPage: true });
+      await this.page.getByLabel('Light Mode').click();
     
       });
   }

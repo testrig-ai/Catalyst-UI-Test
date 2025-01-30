@@ -12,7 +12,6 @@ export default class DefaultPage {
 
    async fillEnvironment() {
    await test.step("ENter  environment details ", async () => {
-   //   await this.page.waitForTimeout(5000);;
       await this.page.locator('li').filter({ hasText: 'Projects' }).locator('svg').nth(1).click();
       await this.page.locator('li').filter({ hasText: /^catalyst12$/ }).getByRole('link').click();
       await this.page.waitForTimeout(5000);

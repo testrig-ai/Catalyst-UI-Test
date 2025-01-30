@@ -9,12 +9,10 @@ require("dotenv").config({ path: envFileName });
        this.page = page;
 }
 
-// private readonly defaultassertion: Locator = this.page.locator(
-//   "(//button[contains(@class,'relative flex')])[1]"
-// );
 
   async register(fname:string,lname:string ,EmailId:string,password:string){
-    await this.page.goto('https://octopus-app-d459t.ondigitalocean.app/');
+    await test.step("Verify register page", async () => {
+ //   await this.page.goto('https://octopus-app-d459t.ondigitalocean.app/');
     await this.page.getByRole('button', { name: 'Sign up' }).click();
     await this.page.getByLabel('First name').click();
     await this.page.getByLabel('First name').fill(`${fname}`);
@@ -29,7 +27,7 @@ require("dotenv").config({ path: envFileName });
     await this.page.getByRole('button', { name: 'Continue' }).click();
     await  this.page.waitForTimeout(10000);
     
-   
+  }); 
 }
 
 

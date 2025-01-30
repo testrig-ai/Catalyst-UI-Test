@@ -12,10 +12,12 @@ export default defineConfig({
   retries:0,
   
   
+  
   use: {
   
     
     trace: 'on-first-retry',
+    baseURL : 'https://octopus-app-d459t.ondigitalocean.app/projects/f134124d-a175-46ad-99d0-63a49de74193',
   },
 
    timeout:0,
@@ -23,9 +25,18 @@ export default defineConfig({
 
  
   projects: [
+    { name: "setup", testMatch: "auth.setup.ts" },
+
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'], viewport: { width: 1400, height: 1000 }},
+      use: { ...devices['Desktop Chrome'], 
+        viewport: { width: 1400, height: 1000 },
+        storageState: join(__dirname, "src", "resources", ".auth", "user.json"),
+        deviceScaleFactor:1,
+    
+    },
+    dependencies: ["setup"],
+      
       
     },
    

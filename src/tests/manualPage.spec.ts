@@ -2,67 +2,79 @@ import { expect, test, envFileName } from "../fixture/Fixture";
 require("dotenv").config({ path: envFileName });
 
 test.describe("ManualPageTests", () => {
-  // test("TC003", async ({ page, signUp, manualPage }) => {
-  //   await signUp.register(
-  //     process.env.fname!,
-  //     process.env.lname!,
-  //     process.env.email!,
-  //     process.env.password!
+  // test("TC003-create a new usecase", async ({ page, signUp, manualPage }) => {
+  //   await page.goto(
+  //     "https://octopus-app-d459t.ondigitalocean.app/projects/f134124d-a175-46ad-99d0-63a49de74193"
   //   );
 
   //   await manualPage.createUsecase();
   // });
 
-  test("TC004", async ({ page, signUp, manualPage }) => {
-    await signUp.register(
-      process.env.fname!,
-      process.env.lname!,
-      process.env.email!,
-      process.env.password!
-    );
-    await manualPage.createUsecase();
-    await page.waitForTimeout(10000);
-    await manualPage.createTestCase();
-  });
+  // test("TC004-create a new test case ", async ({
+  //   page,
+  //   signUp,
+  //   manualPage,
+  // }) => {
+  //   await page.goto(
+  //     "https://octopus-app-d459t.ondigitalocean.app/projects/f134124d-a175-46ad-99d0-63a49de74193"
+  //   );
+  //   await manualPage.createUsecase();
+  //   await page.waitForTimeout(10000);
+  //   await manualPage.createTestCase();
+  // });
 
-  // test("TC005", async ({ page, signUp, manualPage }) => {
-  //   await signUp.register(
-  //     process.env.fname!,
-  //     process.env.lname!,
-  //     process.env.email!,
-  //     process.env.password!
+  // test("TC005-verify performance testing ", async ({
+  //   page,
+  //   signUp,
+  //   manualPage,
+  // }) => {
+  //   await page.goto(
+  //     "https://octopus-app-d459t.ondigitalocean.app/projects/f134124d-a175-46ad-99d0-63a49de74193"
   //   );
   //   await manualPage.createPerformance();
   // });
 
-  // test("TC006", async ({ page, signUp, manualPage }) => {
-  //   await signUp.register(
-  //     process.env.fname!,
-  //     process.env.lname!,
-  //     process.env.email!,
-  //     process.env.password!
+  // test("TC006-verify security testing ", async ({
+  //   page,
+  //   signUp,
+  //   manualPage,
+  // }) => {
+  //   await page.goto(
+  //     "https://octopus-app-d459t.ondigitalocean.app/projects/f134124d-a175-46ad-99d0-63a49de74193"
   //   );
   //   await manualPage.securitytesting();
   // });
 
-  // test("TC007", async ({ page, signUp, manualPage }) => {
-  //   await signUp.register(
-  //     process.env.fname!,
-  //     process.env.lname!,
-  //     process.env.email!,
-  //     process.env.password!
+ 
+
+  // test("TC007-create release and  run release test cases", async ({
+  //   page,
+  //   signUp,
+  //   manualPage,
+  // }) => {
+  //   await page.goto(
+  //     "https://octopus-app-d459t.ondigitalocean.app/projects/f134124d-a175-46ad-99d0-63a49de74193"
   //   );
-  //   await manualPage.verifyJobpage();
+  //   await manualPage.createRelease();
+  //   await manualPage.runReleaseTestCase();
   // });
 
-  test("TC008", async ({ page, signUp, manualPage }) => {
-    await signUp.register(
-      process.env.fname!,
-      process.env.lname!,
-      process.env.email!,
-      process.env.password!
+  // test("TC008-creat defect and verify job page", async ({
+  //   page,
+  //   signUp,
+  //   manualPage,
+  // }) => {
+  //   await page.goto(
+  //     "https://octopus-app-d459t.ondigitalocean.app/projects/f134124d-a175-46ad-99d0-63a49de74193"
+  //   );
+  //   await manualPage.createNewDefectpage();
+  
+  // });
+
+  test("TC009-verify job page", async ({ page, signUp, manualPage }) => {
+    await page.goto(
+      "https://octopus-app-d459t.ondigitalocean.app/projects/f134124d-a175-46ad-99d0-63a49de74193"
     );
-    await manualPage.createRelease();
-    await manualPage.runReleaseTestCase();
+    await manualPage.verifyJobpage();
   });
 });

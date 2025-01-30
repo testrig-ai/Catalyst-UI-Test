@@ -16,7 +16,7 @@ export default class SettingPage {
             await this.page.getByRole('button', { name: 'Audit Logs' }).click();
             await this.page.waitForTimeout(5000);
             await this.page.screenshot({ path: './src/resources/snapShots/auditPage.png', fullPage: true });
-            await this.page.getByTestId('log-row').locator('div').filter({ hasText: 'JaydeepCreateReleaseNo Details1/29/' }).locator('div').first().click();
+            await this.page.locator("(//div[contains(@class,'hover:bg-neutral-100 dark:hover:bg-neutral-800')])[1]").click();
             await this.page.locator('body').press('Space');
             await this.page.waitForTimeout(2000);
             await this.page.locator('body').press('Space');

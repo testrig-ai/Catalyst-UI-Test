@@ -209,11 +209,13 @@ export default class ManualPage {
         .filter({ hasText: "Manage" })
         .locator("div")
         .click();
+
       await this.page
         .locator("li")
         .filter({ hasText: /^Jobs$/ })
         .getByRole("link")
         .click();
+        await this.page.waitForTimeout(20000);
       await this.page.screenshot({
         path: "./src/resources/snapShots/jobpage.png",
         fullPage: true,

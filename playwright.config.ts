@@ -10,9 +10,8 @@ export default defineConfig({
   reporter: [
     [
       "html",
-
       {
-        outputFolder: join(__dirname, "./reports/htmlreports/"),
+        outputFolder: join(__dirname, "playwright-report"), // Change this path
         open: "never",
       },
     ],

@@ -39,27 +39,23 @@ export default class ManualPage {
         .click();
       await this.page.getByText("Medium").click();
       await this.page.getByTestId("UseCasetittle-inputbox").click();
-      await this.page.getByTestId("UseCasetittle-inputbox").fill("Email");
+      await this.page.getByTestId("UseCasetittle-inputbox").fill("User Login");
       await this.page
         .locator("div")
         .filter({ hasText: /^Use Case Description \*$/ })
         .getByRole("paragraph")
         .click();
-      await this.page.locator(".tiptap").fill("Email login");
+      await this.page.locator(".tiptap").fill("Allows a valid username and password.");
       await this.page.getByTestId("UseCasePreconditon-TextBox").click();
       await this.page
         .getByTestId("UseCasePreconditon-TextBox")
         .fill("login page visibility");
-      await this.page
-        .locator("div")
-        .filter({ hasText: /^Email login$/ })
-        .nth(2)
-        .click();
+        
       await this.page
         .locator("div")
         .filter({ hasText: /^Save$/ })
         .getByRole("button")
-        .click();
+        .click({force:true});
       await this.page.waitForTimeout(10000);
       await this.page.screenshot({
         path: "./src/resources/snapShots/useCase.png",
@@ -68,44 +64,57 @@ export default class ManualPage {
     });
   }
 
+    
+
   async createTestCase() {
     await test.step("Create a new test_case", async () => {
       await this.page.getByRole("button", { name: "Add Test Case" }).click();
+      
       await this.page
         .locator("div")
         .filter({ hasText: /^StateActive$/ })
         .nth(1)
         .click();
       await this.page.getByText("Active").nth(1).click();
+      
       await this.page.waitForTimeout(2000);
+      
       await this.page.getByText("Medium").click();
       await this.page.getByText("Low").click();
+      
       await this.page.getByTestId("TestCasetittle-inputbox").click();
       await this.page
         .getByTestId("TestCasetittle-inputbox")
-        .fill("Resgistration");
+        .fill("Verify User Login Functionality");
+      
       await this.page.getByTestId("TestcaseDescription-TextBox").click();
       await this.page
         .getByTestId("TestcaseDescription-TextBox")
-        .fill("add details");
+        .fill("Test to ensure the user can successfully log into the application with valid credentials.");
+      
       await this.page.getByTestId("TestcasePreconditon-TextBox").click();
       await this.page
         .getByTestId("TestcasePreconditon-TextBox")
-        .fill("go to  registration  page");
+        .fill("User must be registered with valid login credentials.");
+      
       await this.page.locator("#skip").getByRole("button").first().click();
+      
       await this.page.waitForTimeout(5000);
+      
       await this.page
         .getByRole("link", { name: "Manual Test", exact: true })
         .click();
       await this.page.getByRole("button", { name: "Test Cases" }).click();
+      
       await this.page.waitForTimeout(10000);
+      
       await this.page.screenshot({
         path: "./src/resources/snapShots/testCase.png",
         fullPage: true,
       });
     });
   }
-
+  
   async createPerformance() {
     await test.step("Create a performance ", async () => {
       await this.page
@@ -257,12 +266,12 @@ export default class ManualPage {
       await this.page.getByRole("button", { name: "Create Release" }).click();
       await this.page
         .getByPlaceholder("Enter release title")
-        .fill("AI-Testcase generation ");
+        .fill("Security Enhancements and Performance Optimization");
       await this.page
         .getByTestId("release-description")
         .getByRole("paragraph")
         .click();
-      await this.page.locator(".tiptap").fill("Test case generation ");
+      await this.page.locator(".tiptap").fill("This release strengthens the platforms security with enhanced vulnerability scanning and implements performance improvements for faster, more efficient system operation");
       await this.page
         .locator("div")
         .filter({ hasText: /^EnvironmentNone$/ })
@@ -356,9 +365,9 @@ export default class ManualPage {
       await this.page.locator('li').filter({ hasText: /^Defects$/ }).getByRole('link').click();
       await this.page.getByRole('button', { name: 'New Defect' }).click();
       await this.page.getByPlaceholder('Enter Defect Title').click();
-      await this.page.getByPlaceholder('Enter Defect Title').fill('Header page');
+      await this.page.getByPlaceholder('Enter Defect Title').fill('Header not visible on the homepage');
       await this.page.locator('div').filter({ hasText: /^Defect Description \*$/ }).getByRole('paragraph').click();
-      await this.page.locator('.tiptap').fill('header  page not visible');
+      await this.page.locator('.tiptap').fill('This name and title are logical for a defect related to UI visibility, particularly an issue with the header on the homepage. You can adjust them based on the specific context of the defect in your application. ');
       await this.page.locator('.relative > .rounded-md > div > div > svg > path').first().click();
       await this.page.getByText('Medium').click();
       await this.page.locator('div').filter({ hasText: /^AssigneesNo one$/ }).nth(3).click();

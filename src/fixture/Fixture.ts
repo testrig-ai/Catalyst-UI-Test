@@ -3,11 +3,13 @@ import SignUp from "../pageObject/signup.page";
 import DefaultPage from "../pageObject/default.page";
 import ManualPage from "../pageObject/manual.page";
 import SettingPage from "../pageObject/setting.page";
+import UserDetailsPage from "../pageObject/userdetails.page";
 type pages  =  {
    signUp: SignUp;
    defaultPage : DefaultPage;
    manualPage : ManualPage;
    settingPage : SettingPage
+   userdetailspage : UserDetailsPage;
 };
 const pageObjects = base.extend<pages>({
     signUp: async ({ page }, use) => {
@@ -21,6 +23,9 @@ const pageObjects = base.extend<pages>({
     }, 
     settingPage: async ({ page }, use) => {
       await use(new SettingPage(page));
+    }, 
+    userdetailspage: async ({ page }, use) => {
+      await use(new UserDetailsPage(page));
     }, 
 
 });

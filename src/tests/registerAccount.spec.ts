@@ -1,6 +1,6 @@
 
-import { expect, test ,Page,envFileName } from "../fixture/Fixture";
-require("dotenv").config({ path: envFileName });
+// import { expect, test ,Page,envFileName } from "../fixture/Fixture";
+// require("dotenv").config({ path: envFileName });
 
  
 

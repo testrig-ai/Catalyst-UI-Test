@@ -1,45 +1,67 @@
-import { defineConfig, devices } from '@playwright/test';
-import { join } from 'path';
+import { defineConfig, devices } from "@playwright/test";
+import { join } from "path";
 
 export default defineConfig({
-  testDir: join(__dirname, 'src', 'tests'),
-  snapshotDir: './src/resources/snapShots',
+  testDir: join(__dirname, "src", "tests"),
+  snapshotDir: "./src/resources/snapShots",
   fullyParallel: true,
   workers: 1,
 
- 
   reporter: [
     [
-      'html', 
+      "html",
+
       {
-        outputFolder: join(__dirname, './reports/htmlreports/'),
-        open: 'never',
+        outputFolder: join(__dirname, "./reports/htmlreports/"),
+        open: "never",
       },
     ],
-    ['./src/loggerSetUp/Logger.ts'], 
+    ["./src/loggerSetUp/Logger.ts"],
   ],
 
   retries: 0,
   timeout: 0,
 
   use: {
-    trace: 'on-first-retry',
-     },
+    trace: "on-first-retry",
+  },
 
   projects: [
     {
-      name: 'setup',
-      testMatch: 'auth.setup.ts', 
+      name: "setup",
+      testMatch: "auth.setup.ts",
     },
     {
-      name: 'chromium',
+      name: "chromium",
       use: {
-        ...devices['Desktop Chrome'],
+        ...devices["Desktop Chrome"],
         viewport: { width: 1400, height: 1000 },
-        storageState: join(__dirname, 'src', 'resources', '.auth', 'user.json'),
+        storageState: join(__dirname, "src", "resources", ".auth", "user.json"),
         deviceScaleFactor: 1,
       },
-      dependencies: ['setup'], 
+      dependencies: ["setup"],
+    },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] ,
+        viewport: { width: 1400, height: 1000 },
+        storageState: join(__dirname, "src", "resources", ".auth", "user.json"),
+        deviceScaleFactor: 1,
+      },
+      dependencies: ["setup"],
+    },
+    {
+      name: 'webkit',
+      use: { ...devices['Desktop Safari'],
+        viewport: { width: 1400, height: 1000 },
+        storageState: join(__dirname, "src", "resources", ".auth", "user.json"),
+        deviceScaleFactor: 1,
+       },
+       dependencies: ["setup"], 
     },
   ],
+
+   
+
+   
 });

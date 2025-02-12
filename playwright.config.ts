@@ -11,7 +11,7 @@ export default defineConfig({
     [
       "html",
       {
-        outputFolder: join(__dirname, "playwright-report"), // Change this path
+        outputFolder: join(__dirname, "playwright-report"), 
         open: "never",
       },
     ],
@@ -60,7 +60,4 @@ export default defineConfig({
     },
   ],
 
-   
-
-   
 });

@@ -6,12 +6,12 @@ require("dotenv").config({ path: envFileName });
 
 test.describe("UserdetailsPageTest @details", () => {
 
-    test("TC010-Add new profile pic", async ({  page,userdetailspage}) => {
+    test("TC012-Add new profile pic", async ({  page,userdetailspage}) => {
         await page.goto(process.env.page!); 
         await userdetailspage.addProfilePhoto();
         });
 
-     test("TC011-verify logout", async ({  page,userdetailspage}) => {
+     test("TC013-verify logout", async ({  page,userdetailspage}) => {
          await page.goto(process.env.page!); 
          await userdetailspage.Verifylogout();
          });

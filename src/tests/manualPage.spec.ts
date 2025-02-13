@@ -63,3 +63,4 @@ test.describe("ManualPageTests", () => {
     await manualPage.verifyJobpage();
   });
 });
+

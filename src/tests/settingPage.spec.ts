@@ -3,12 +3,12 @@ require("dotenv").config({ path: envFileName });
 
 test.describe("ManualPageTests", () => {
 
-    test("TC009-verify audit log page", async ({  page,settingPage}) => {
+    test("TC010-verify audit log page", async ({  page,settingPage}) => {
       await page.goto(process.env.page!); 
         await settingPage.verifyAuditlog();
       });
 
-      test("TC010-verify team page ", async ({ page,  settingPage}) => {
+      test("TC011-verify team page ", async ({ page,  settingPage}) => {
         await page.goto(process.env.page!); 
         await settingPage.verifyTeamPage();
       });

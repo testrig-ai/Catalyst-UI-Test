@@ -1,11 +1,11 @@
 import { Page, envFileName, Locator, test } from "../fixture/Fixture";
 require("dotenv").config({ path: envFileName });
-
+ 
 export default class SignUp {
   constructor(public page: Page) {
     this.page = page;
   }
-
+ 
   async register(
     fname: string,
     lname: string,
@@ -34,3 +34,4 @@ export default class SignUp {
     });
   }
 }
+ 

@@ -1,10 +1,10 @@
 import { Page, envFileName, Locator, test } from "../fixture/Fixture";
-
+ 
 export default class ManualPage {
   constructor(public page: Page) {
     this.page = page;
   }
-
+ 
   async createUsecase() {
     await test.step("Create a new use case ", async () => {
       await this.page
@@ -13,11 +13,7 @@ export default class ManualPage {
         .locator("svg")
         .nth(1)
         .click();
-      await this.page
-        .locator("li")
-        .filter({ hasText: /^catalyst12$/ })
-        .getByRole("link")
-        .click();
+      await this.page.getByRole('link', { name: 'catalyst12' }).click();
       await this.page.getByText("Total Use Cases").click();
       await this.page.getByRole("button", { name: "Create Use Case" }).click();
       await this.page.waitForTimeout(5000);
@@ -50,7 +46,7 @@ export default class ManualPage {
       await this.page
         .getByTestId("UseCasePreconditon-TextBox")
         .fill("login page visibility");
-        
+       
       await this.page
         .locator("div")
         .filter({ hasText: /^Save$/ })
@@ -63,58 +59,58 @@ export default class ManualPage {
       });
     });
   }
-
-    
-
+ 
+   
+ 
   async createTestCase() {
     await test.step("Create a new test_case", async () => {
       await this.page.getByRole("button", { name: "Add Test Case" }).click();
-      
+     
       await this.page
         .locator("div")
         .filter({ hasText: /^StateActive$/ })
         .nth(1)
         .click();
       await this.page.getByText("Active").nth(1).click();
-      
+     
       await this.page.waitForTimeout(2000);
-      
+     
       await this.page.getByText("Medium").click();
       await this.page.getByText("Low").click();
-      
+     
       await this.page.getByTestId("TestCasetittle-inputbox").click();
       await this.page
         .getByTestId("TestCasetittle-inputbox")
         .fill("Verify User Login Functionality");
-      
+     
       await this.page.getByTestId("TestcaseDescription-TextBox").click();
       await this.page
         .getByTestId("TestcaseDescription-TextBox")
         .fill("Test to ensure the user can successfully log into the application with valid credentials.");
-      
+     
       await this.page.getByTestId("TestcasePreconditon-TextBox").click();
       await this.page
         .getByTestId("TestcasePreconditon-TextBox")
         .fill("User must be registered with valid login credentials.");
-      
+     
       await this.page.locator("#skip").getByRole("button").first().click();
-      
+     
       await this.page.waitForTimeout(5000);
-      
+     
       await this.page
         .getByRole("link", { name: "Manual Test", exact: true })
         .click();
       await this.page.getByRole("button", { name: "Test Cases" }).click();
-      
+     
       await this.page.waitForTimeout(10000);
-      
+     
       await this.page.screenshot({
         path: "./src/resources/snapShots/testCase.png",
         fullPage: true,
       });
     });
   }
-  
+ 
   async createPerformance() {
     await test.step("Create a performance ", async () => {
       await this.page
@@ -123,21 +119,13 @@ export default class ManualPage {
         .locator("svg")
         .nth(1)
         .click();
-      await this.page
-        .locator("li")
-        .filter({ hasText: /^catalyst12$/ })
-        .getByRole("link")
-        .click();
+      await this.page.getByRole('link', { name: 'catalyst12' }).click();
       await this.page
         .locator("li")
         .filter({ hasText: "Manage" })
         .locator("div")
         .click();
-      await this.page
-        .locator("li")
-        .filter({ hasText: /^Performance Testing$/ })
-        .getByRole("link")
-        .click();
+      await this.page.getByRole('link', { name: 'Performance Testing' }).click();
       await this.page.getByRole("combobox").selectOption("0");
       await this.page
         .locator("div")
@@ -153,7 +141,7 @@ export default class ManualPage {
       });
     });
   }
-
+ 
   async securitytesting() {
     await test.step("scan a security testing ", async () => {
       await this.page
@@ -162,21 +150,13 @@ export default class ManualPage {
         .locator("svg")
         .nth(1)
         .click();
-      await this.page
-        .locator("li")
-        .filter({ hasText: /^catalyst12$/ })
-        .getByRole("link")
-        .click();
+      await this.page.getByRole('link', { name: 'catalyst12' }).click();
       await this.page
         .locator("li")
         .filter({ hasText: "Manage" })
         .locator("div")
         .click();
-      await this.page
-        .locator("li")
-        .filter({ hasText: /^Security Testing$/ })
-        .getByRole("link")
-        .click();
+      await this.page.getByRole('link', { name: 'Security Testing' }).click();
       await this.page
         .getByTestId("selectEnvironment-Security")
         .selectOption("0");
@@ -197,7 +177,7 @@ export default class ManualPage {
       });
     });
   }
-
+ 
   async verifyJobpage() {
     await test.step("Verify job page", async () => {
       await this.page
@@ -206,24 +186,16 @@ export default class ManualPage {
         .locator("svg")
         .nth(1)
         .click();
-      await this.page
-        .locator("li")
-        .filter({ hasText: /^catalyst12$/ })
-        .getByRole("link")
-        .click();
-
+      await this.page.getByRole('link', { name: 'catalyst12' }).click();
+ 
       await  this.page.waitForTimeout(5000);
       await this.page
         .locator("li")
         .filter({ hasText: "Manage" })
         .locator("div")
         .click();
-
-      await this.page
-        .locator("li")
-        .filter({ hasText: /^Jobs$/ })
-        .getByRole("link")
-        .click();
+ 
+        await this.page.getByRole('link', { name: 'Jobs' }).click();
         await this.page.waitForTimeout(20000);
       await this.page.screenshot({
         path: "./src/resources/snapShots/jobpage.png",
@@ -235,11 +207,11 @@ export default class ManualPage {
         path: "./src/resources/snapShots/jobpageData.png",
         fullPage: true,
       });
-
-
+ 
+ 
     });
   }
-
+ 
   async createRelease() {
     await test.step("Create a  new release", async () => {
       await this.page
@@ -248,21 +220,13 @@ export default class ManualPage {
         .locator("svg")
         .nth(1)
         .click();
-      await this.page
-        .locator("li")
-        .filter({ hasText: /^catalyst12$/ })
-        .getByRole("link")
-        .click();
+      await this.page.getByRole('link', { name: 'catalyst12' }).click();
       await this.page
         .locator("li")
         .filter({ hasText: "Manage" })
         .locator("div")
         .click();
-      await this.page
-        .locator("li")
-        .filter({ hasText: /^Releases$/ })
-        .getByRole("link")
-        .click();
+      await this.page.getByRole('link', { name: 'Releases' }).click();
       await this.page.getByRole("button", { name: "Create Release" }).click();
       await this.page
         .getByPlaceholder("Enter release title")
@@ -293,7 +257,7 @@ export default class ManualPage {
       });
     });
   }
-
+ 
   async runReleaseTestCase() {
     await test.step("verify  release test case run ", async () => {
     await this.page
@@ -353,16 +317,16 @@ export default class ManualPage {
       fullPage: true,
     });
     await this.page.locator('[data-test-id="notification-bell"]').click();
-
+ 
   });
   }
-
+ 
   async createNewDefectpage() {
     await test.step("Verify job page", async () => {
       await this.page.locator('li').filter({ hasText: 'Projects' }).locator('div').click();
       await this.page.locator('li').filter({ hasText: /^catalyst12$/ }).getByRole('link').click();
       await this.page.locator('li').filter({ hasText: 'Manage' }).locator('path').nth(1).click();
-      await this.page.locator('li').filter({ hasText: /^Defects$/ }).getByRole('link').click();
+      await this.page.getByRole('link', { name: 'Defects' }).click();
       await this.page.getByRole('button', { name: 'New Defect' }).click();
       await this.page.getByPlaceholder('Enter Defect Title').click();
       await this.page.getByPlaceholder('Enter Defect Title').fill('Header not visible on the homepage');
@@ -389,9 +353,9 @@ export default class ManualPage {
         path: "./src/resources/snapShots/defectPage.png",
         fullPage: true,
       });
-
+ 
     });
   }
-
-
+ 
+ 
 }

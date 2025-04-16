@@ -4,11 +4,11 @@ export default class DefaultPage {
   constructor(public page: Page) {
     this.page = page;
   }
-
+ 
   private readonly environment: Locator = this.page.locator(
     "//button[text()='Environment']"
   );
-
+ 
   async fillEnvironment() {
     await test.step("ENter  environment details ", async () => {
       await this.page
@@ -17,11 +17,7 @@ export default class DefaultPage {
         .locator("svg")
         .nth(1)
         .click();
-      await this.page
-        .locator("li")
-        .filter({ hasText: /^catalyst12$/ })
-        .getByRole("link")
-        .click();
+      await this.page.getByRole('link', { name: 'catalyst12' }).click();
       await this.page.waitForTimeout(5000);
       await this.page.getByRole("button", { name: "Environment" }).click();
       await this.page.getByPlaceholder("Enter Environment Name").click();
@@ -56,20 +52,11 @@ export default class DefaultPage {
       await this.page.getByLabel("Light Mode").click();
     });
   }
-
+ 
   async createNewProject() {
     await test.step("Create new project ", async () => {
-      await this.page
-        .locator("li")
-        .filter({ hasText: "Projects" })
-        .locator("path")
-        .nth(1)
-        .click();
-      await this.page
-        .locator("li")
-        .filter({ hasText: /^New Project$/ })
-        .getByRole("link")
-        .click();
+      await this.page.locator('li').filter({ hasText: 'Projects' }).locator('div').click();
+      await this.page.getByRole('link', { name: 'New Project' }).click();
       await this.page.getByPlaceholder("Enter Name").click();
       await this.page.getByPlaceholder("Enter Name").fill("catalyst12");
       await this.page.waitForTimeout(5000);

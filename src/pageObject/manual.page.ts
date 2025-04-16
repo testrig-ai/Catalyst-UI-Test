@@ -324,7 +324,7 @@ export default class ManualPage {
   async createNewDefectpage() {
     await test.step("Verify job page", async () => {
       await this.page.locator('li').filter({ hasText: 'Projects' }).locator('div').click();
-      await this.page.locator('li').filter({ hasText: 'catalyst12' }).getByRole('link').click();
+      await this.page.locator('a:has(span:has-text("catalyst12"))').click();
       await this.page.locator('li').filter({ hasText: 'Manage' }).locator('path').nth(1).click();
       await this.page.getByRole('link', { name: 'Defects' }).click();
       await this.page.getByRole('button', { name: 'New Defect' }).click();
